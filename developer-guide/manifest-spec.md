@@ -21,6 +21,7 @@ The manifest MUST be located at the root of the package directory and included i
 | `executable` | string | **Yes** | Path to the entry point relative to the package root. |
 | `description` | string | No | High-level summary of the tool's purpose. |
 | `dependencies` | array | No | List of package names required for this tool to function. |
+| `hooks` | object | No | Custom lifecycle scripts (Trinity v1.1.0+). See [Lifecycle Hooks](./lifecycle-hooks.md). |
 | `files` | array | **Yes** | List of all files to be extracted and managed. |
 | `priority` | integer | No | Default priority for the Alternatives system (Default: `100`). |
 

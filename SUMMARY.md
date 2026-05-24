@@ -13,7 +13,7 @@
 ## Developer Guide
 * [Manifest Specification](developer-guide/manifest-spec.md)
 * [Creating Packages](developer-guide/creating-packages.md)
-* [Post-Install Hooks](developer-guide/post-install-hooks.md)
+* [Lifecycle Hooks](developer-guide/lifecycle-hooks.md)
 
 ## Features
 * [🛡️ Atomic AVC Model](features/atomic-avc.md)
