@@ -1,0 +1,82 @@
+# Manifest Specification
+
+The `roms_package.json` file is the definitive manifest for any ROMs-util package. It defines how the package is identified, what it provides, and how it interacts with the ecosystem.
+
+---
+
+## 📂 File Location
+The manifest MUST be located at the root of the package directory and included in the `.rms` (ZIP) archive.
+
+---
+
+## 🛠️ Schema Definition
+
+### Root Fields
+
+| Field | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `name` | string | **Yes** | Unique identifier (e.g., `autofirewall`). Used as the installation folder name. |
+| `version` | string | **Yes** | Semantic version (e.g., `1.0.0`). |
+| `commandName` | string | **Yes** | The primary command to be registered in the System PATH. |
+| `executable` | string | **Yes** | Path to the entry point relative to the package root. |
+| `description` | string | No | High-level summary of the tool's purpose. |
+| `dependencies` | array | No | List of package names required for this tool to function. |
+| `files` | array | **Yes** | List of all files to be extracted and managed. |
+| `priority` | integer | No | Default priority for the Alternatives system (Default: `100`). |
+
+---
+
+## 📂 Installation Hierarchy
+ROMs-util enforces a standardized directory structure to ensure reliability:
+*   **Root:** All packages are installed into `C:\roms\<name>`.
+*   **Name-Based Standard:** The `installDir` field is removed. The engine automatically derives the folder name from the package `name` field.
+
+---
+
+ROMs-util enforces a standardized directory structure to ensure reliability:
+*   **Root:** All packages are installed into `C:\roms\<name>`.
+*   **Relocation:** The `installDir` field is deprecated. The engine automatically handles path anchoring to ensure packages are 100% relocatable.
+
+---
+
+## 🛡️ Dependency Resolution
+
+ROMs-util uses an **Atomic AVC** model for dependency resolution.
+*   **Recursive Mapping:** The manager crawls the `dependencies` array and builds a full tree.
+*   **Version Pinning:** (Future Update) Support for specific version ranges. Currently, the manager fetches the latest available from the registry.
+
+---
+
+## 🔄 The Alternatives System
+
+The `commandName` and `priority` fields determine how the tool is registered in `C:\roms\bin`.
+
+*   If two packages provide the same `commandName`, the one with the higher **priority** becomes the active provider.
+*   Users can manually override this using `roms select <commandName>`.
+
+---
+
+## 🧩 Example Manifest
+
+```json
+{
+    "name": "autofirewall",
+    "version": "0.5.1",
+    "commandName": "autofirewall",
+    "executable": "autofirewall.ps1",
+    "description": "Automates Windows Firewall policy creation.",
+    "dependencies": ["dotnet-sdk-8"],
+    "priority": 200,
+    "files": [
+        "roms_package.json",
+        "autofirewall.ps1",
+        "lib/firewall_logic.ps1",
+        "LICENSE"
+    ]
+}
+```
+
+---
+
+## 🛡️ Industrial Strength Validation
+The `package_builder` tool automatically validates your manifest against this schema before allowing a build. This ensures that every `.rms` file in the ecosystem is predictable and safe.
