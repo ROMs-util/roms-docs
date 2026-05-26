@@ -39,7 +39,7 @@ Let's install the **Autofirewall** utility as an example:
 
 ### What just happened?
 1.  **Map:** `roms` identified the latest version of Autofirewall.
-2.  **Acquire:** The `.rms` package was staged and verified for integrity.
+2.  **Acquire:** The engine was self-healed/bootstrapped (if missing) and verified by the **Truth-Verification Watchdog**. The `.rms` package was staged and verified for integrity.
 3.  **Commit:** The tool was extracted to `C:\roms\autofirewall` and a launcher was created in `C:\roms\bin`.
 
 ---

@@ -8,11 +8,11 @@ ROMs-util is a high-performance, zero-dependency ecosystem designed to bring adv
 
 ## 🚀 The ROMs Philosophy
 
-Most Windows managers rely on heavy external frameworks or inconsistent PowerShell scripts. ROMs-util is built differently:
 
 *   **Zero External Dependencies:** We bypass slow cmdlets in favor of native .NET namespaces (`[System.IO]`, `[System.Security.Cryptography]`).
 *   **Safety by Design:** Our flagship **Atomic AVC** model ensures your machine is never polluted by partial or failed installations.
 *   **Ecosystem Harmony:** The **Alternatives** system resolves command name collisions, allowing multiple versions of the same tool to coexist peacefully.
+*   **Truth-Verification Watchdog:** Every boot, the manager proactively verifies the integrity of the standalone engine using manifest-driven signatures, ensuring a self-healing foundation.
 
 ---
 
