@@ -22,6 +22,7 @@ The manifest MUST be located at the root of the package directory and included i
 | `description` | string | No | High-level summary of the tool's purpose. |
 | `dependencies` | array | No | List of package names required for this tool to function. |
 | `hooks` | object | No | Custom lifecycle scripts (Trinity v1.1.0+). See [Lifecycle Hooks](./lifecycle-hooks.md). |
+| `environment_variables` | object | No | Key-value pairs of persistent system settings. |
 | `files` | array | **Yes** | List of all files to be extracted and managed. |
 | `priority` | integer | No | Default priority for the Alternatives system (Default: `100`). |
 
@@ -62,16 +63,28 @@ The `commandName` and `priority` fields determine how the tool is registered in 
 ```json
 {
     "name": "autofirewall",
-    "version": "0.5.1",
+    "version": "1.0.0",
     "commandName": "autofirewall",
-    "executable": "autofirewall.ps1",
+    "executable": "bin/firewall.ps1",
     "description": "Automates Windows Firewall policy creation.",
-    "dependencies": ["dotnet-sdk-8"],
+    "author": "ROMs-util Team",
+    "architecture": "all",
     "priority": 200,
+    "dependencies": {
+        "packages": ["dotnet-sdk-8"]
+    },
+    "environment_variables": {
+        "FIREWALL_MODE": "STRICT"
+    },
+    "hooks": {
+        "postInstall": "scripts/setup.ps1",
+        "preUninstall": "scripts/cleanup.ps1"
+    },
     "files": [
         "roms_package.json",
-        "autofirewall.ps1",
-        "lib/firewall_logic.ps1",
+        "bin/firewall.ps1",
+        "scripts/setup.ps1",
+        "scripts/cleanup.ps1",
         "LICENSE"
     ]
 }

@@ -14,6 +14,7 @@
 * [Manifest Specification](developer-guide/manifest-spec.md)
 * [Creating Packages](developer-guide/creating-packages.md)
 * [Lifecycle Hooks](developer-guide/lifecycle-hooks.md)
+* [Environment Variables](developer-guide/environment-variables.md)
 
 ## Features
 * [🛡️ Atomic AVC Model](features/atomic-avc.md)

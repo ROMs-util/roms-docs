@@ -10,8 +10,8 @@ The ecosystem is divided into three distinct applications, each with a specializ
 
 ### 1. The Manager (`roms`) - "The High-level Manager"
 The high-level orchestrator. `roms` is what the user interacts with most.
-*   **Responsibility:** Registry synchronization, dependency resolution, environment orchestration, UAC elevation routing, and **Truth-Verification** (integrity checks on startup).
-*   **Key Logic:** Implements the **Atomic AVC** model to ensure transaction safety and the **Truth-Verification Watchdog** to guarantee self-healing foundations.
+*   **Responsibility:** Registry synchronization, dependency resolution, environment orchestration (PATH/Alternatives), UAC elevation routing, and **Truth-Verification** (proactive integrity checks on every startup).
+*   **Key Logic:** Implements the **Atomic AVC** model to ensure transaction safety and the **Truth-Verification Watchdog** to guarantee a self-healing foundation by verifying the Standalone Engine against its manifest.
 *   **Data:** Manages the `index.json` (Registry) and `alternatives.json` (Shims).
 
 ### 2. The Engine (`rmspkg`) - "The Standalone Engine"
