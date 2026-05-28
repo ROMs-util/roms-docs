@@ -45,7 +45,7 @@ ROMs-util enforces a standardized directory structure to ensure reliability:
 
 ROMs-util uses an **Atomic AVC** model for dependency resolution.
 *   **Recursive Mapping:** The manager crawls the `dependencies` array and builds a full tree.
-*   **Version Pinning:** (Future Update) Support for specific version ranges. Currently, the manager fetches the latest available from the registry.
+*   **SemVer Compliance:** Supports industrial-strength version pinning using Caret (`^`), Tilde (`~`), and logical ranges (e.g., `>=1.2.0`). The manager automatically resolves the highest satisfying version from all registered sources.
 
 ---
 
