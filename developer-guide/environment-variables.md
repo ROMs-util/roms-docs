@@ -33,7 +33,7 @@ If you need to point to a specific directory within your package, use the full p
 
 ---
 
-## 🛡️ Industrial Strength Hygiene
+## 🛡️ Variable Hygiene
 
 One of the primary benefits of using ROMs-util for environment management is automatic cleanup.
 

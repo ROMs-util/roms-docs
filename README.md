@@ -1,6 +1,6 @@
 # Welcome to ROMs-util
 
-**Industrial Strength Windows Package Management.**
+**Robust Windows Package Management.**
 
 ROMs-util is a high-performance, zero-dependency ecosystem designed to bring advanced orchestration patterns to the Windows environment. Powered by native .NET performance, it ensures your system utilities remain portable, immutable, and easy to manage.
 
@@ -12,6 +12,7 @@ ROMs-util is a high-performance, zero-dependency ecosystem designed to bring adv
 *   **Zero External Dependencies:** We bypass slow cmdlets in favor of native .NET namespaces (`[System.IO]`, `[System.Security.Cryptography]`).
 *   **Safety by Design:** Our flagship **Atomic AVC** model ensures your machine is never polluted by partial or failed installations.
 *   **Ecosystem Harmony:** The **Alternatives** system resolves command name collisions, allowing multiple versions of the same tool to coexist peacefully.
+*   **Shell Safety:** Our **Bulletproof Tunnel** ensures that special characters like `^` and `~` work perfectly even when unquoted in CMD, while **Operator Isolation** protects your chained commands.
 *   **Truth-Verification Watchdog:** Every boot, the manager proactively verifies the integrity of the standalone engine using manifest-driven signatures, ensuring a self-healing foundation.
 
 ---
@@ -32,5 +33,5 @@ Whether you are here to install a tool or build your own, we have you covered:
 
 ---
 
-## 🛡️ The Industrial Strength Guarantee
+## 🛡️ The Reliability Guarantee
 Every tool in this ecosystem is audited for performance and version-independence. We don't just script; we engineer.

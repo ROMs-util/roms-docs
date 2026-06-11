@@ -47,5 +47,5 @@ Only if Phase 1 and Phase 2 are 100% successful does the manager proceed to inst
 
 ---
 
-## 🛡️ Industrial Strength Guarantee
+## 🛡️ The Reliability Guarantee
 By implementing AVC, ROMs-util ensures that your `C:\roms` directory remains a pristine environment. Every successful `roms install` is a complete transaction, and every failure is a non-event for your system files.

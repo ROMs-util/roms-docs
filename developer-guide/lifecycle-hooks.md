@@ -52,7 +52,7 @@ If you don't want to modify your manifest, simply name your scripts following th
 
 ---
 
-## 🛡️ Industrial Strength Requirements
+## 🛡️ Requirements
 
 To ensure ecosystem stability, all hooks must adhere to these rules:
 

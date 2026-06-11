@@ -8,6 +8,7 @@
 
 ## User Guide
 * [CLI Reference](user-guide/cli-reference.md)
+* [Channel Awareness](user-guide/channel-awareness.md)
 * [Managing Alternatives](user-guide/alternatives.md)
 
 ## Developer Guide

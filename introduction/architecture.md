@@ -10,12 +10,16 @@ The ecosystem is divided into three distinct applications, each with a specializ
 
 ### 1. The Manager (`roms`) - "The High-level Manager"
 The high-level orchestrator. `roms` is what the user interacts with most.
-*   **Responsibility:** Registry synchronization, dependency resolution, environment orchestration (PATH/Alternatives), UAC elevation routing, and **Truth-Verification** (proactive integrity checks on every startup).
+*   **Responsibility:** Registry synchronization, dependency resolution, environment orchestration, and **Channel Management**.
 *   **Key Logic:** 
     - **Atomic AVC**: Ensures transaction safety during installation.
-    - **Truth-Verification Watchdog**: Guarantees a self-healing foundation by verifying the Standalone Engine against its manifest.
+        - **Truth-Verification Watchdog**: Guarantees a self-healing foundation by verifying the Standalone Engine against its manifest.
+    - **Bulletproof Tunnel**: Uses Delayed Expansion and Memory-Direct parsing to capture literal arguments, preserving unquoted symbols (`^`, `~`) from CMD mangling.
+    - **Shell Operator Isolation**: Truncates arguments at unquoted delimiters (`&&`, `;`, `|`, `>`) to ensure chained commands are never misinterpreted as package names.
     - **Log-First Audit Strategy**: Logs removal intent *before* execution to ensure a reliable audit trail in `roms.log` even during race conditions.
-*   **Data:** Manages the `index.json` (Registry) and `alternatives.json` (Shims).
+    - **Ancestor Shell Detection**: Crawls the process tree to identify persistent terminal hosts, enabling window-isolated session memory.
+    - **Surgical UAC**: Restricts Administrator requests to system-wide configuration changes only.
+*   **Data:** Manages `index.json`, `alternatives.json`, and `temp/sessions/` (transient state).
 
 ### 2. The Engine (`rmspkg`) - "The Standalone Engine"
 The low-level installer. It is designed to be a standalone, atomic engine.
@@ -57,4 +61,5 @@ ROMs-util adheres to a strict, isolated directory structure rooted at `C:\roms`:
 | `C:\roms\bin` | **Bin** | Centralized launchers (Shims). Add this to your System PATH. |
 | `C:\roms\.metadata` | **Registry** | Hidden database of installed package manifests and file lists. |
 | `C:\roms\logs` | **Logs** | Transactional history of every install/uninstall action. |
-| `C:\roms\cache` | **Cache** | Local copies of remote registry indexes. |
+| `C:\roms\cache` | **Cache** | Partitioned local copies of remote registry indexes. |
+| `C:\roms\temp\sessions` | **Sessions** | Window-isolated JSON state files. |

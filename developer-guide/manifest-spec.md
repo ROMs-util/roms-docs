@@ -45,7 +45,7 @@ ROMs-util enforces a standardized directory structure to ensure reliability:
 
 ROMs-util uses an **Atomic AVC** model for dependency resolution.
 *   **Recursive Mapping:** The manager crawls the `dependencies` array and builds a full tree.
-*   **SemVer Compliance:** Supports industrial-strength version pinning using Caret (`^`), Tilde (`~`), and logical ranges (e.g., `>=1.2.0`). The manager automatically resolves the highest satisfying version from all registered sources.
+*   **SemVer Compliance:** Supports robust version pinning using Caret (`^`), Tilde (`~`), logical ranges (e.g., `>=1.2.0`), and explicit equality (`=`). The manager automatically resolves the highest satisfying version from all registered sources.
 
 ---
 
@@ -92,5 +92,16 @@ The `commandName` and `priority` fields determine how the tool is registered in 
 
 ---
 
-## 🛡️ Industrial Strength Validation
+## 🛡️ Validation
 The `package_builder` tool automatically validates your manifest against this schema before allowing a build. This ensures that every `.rms` file in the ecosystem is predictable and safe.
+
+---
+
+## ⚠️ Common Gotchas (FAQ)
+
+### "Should I include a 'v' in the version string?"
+**No.** This is the most common mistake. 
+*   ❌ **Incorrect:** `"version": "v1.0.0"`
+*   ✅ **Correct:** `"version": "1.0.0"`
+
+The leading `v` is a human-friendly label used for Git tags and Release titles. However, the `roms` resolver is a mathematical engine; it needs pure numbers to calculate version ranges and dependencies. Including a `v` will make your package unparseable and break dependency resolution.
